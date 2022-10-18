@@ -10,64 +10,64 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:id="@+id/loginpage">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView11"
-            android:layout_marginHorizontal="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            android:fontFamily="@font/archivo"
-            android:text="POC - LOGIN"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center_horizontal" />
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtUsername"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView11"
+                android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="1"
-                android:inputType="text"
-                android:hint="Username"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            android:layout_marginHorizontal="20dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtPassword"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/archivo"
+                android:text="POC - LOGIN"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center_horizontal" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="1"
-                android:inputType="textPassword"
-                android:hint="Password"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/brown"
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:text="LOGIN"/>
-    </LinearLayout>
+                android:layout_marginHorizontal="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:inputType="text"
+                    android:hint="Username"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:layout_marginHorizontal="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:inputType="textPassword"
+                    android:hint="Password"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:backgroundTint="@color/brown"
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="LOGIN"/>
+        </LinearLayout>
     </LinearLayout>
 
 

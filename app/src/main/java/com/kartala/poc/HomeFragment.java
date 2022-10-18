@@ -136,6 +136,8 @@ public class HomeFragment extends Fragment {
         txtTable = view.findViewById(R.id.txtTable);
         SharedPref.init(getActivity());
         ID = SharedPref.getString(SharedPref.KEY_ID,null);
+        String nama = SharedPref.getString(SharedPref.KEY_NAME,null);
+        txtWelcome.setText("Welcome, "+nama);
         TOKEN = SharedPref.getString(SharedPref.KEY_TOKEN,null);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rvProduct);
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -151,7 +153,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if(response.isSuccessful()){
                     List<ProductModel> products = response.body().getProduct();
-                    mAdapter = new ProductAdapter(products);
+                    mAdapter = new ProductAdapter(products,getActivity());
                     mRecyclerView.setAdapter(mAdapter);
                 }else{
                     Toast.makeText(getActivity(), "Error : "+response.message().toString(), Toast.LENGTH_SHORT).show();
@@ -173,7 +175,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if(response.isSuccessful()){
                     List<ProductModel> products = response.body().getProduct();
-                    mAdapter = new ProductAdapter(products);
+                    mAdapter = new ProductAdapter(products,getActivity());
                     mRecyclerView.setAdapter(mAdapter);
                 }else{
                     Toast.makeText(getActivity(), "Error : "+response.message().toString(), Toast.LENGTH_SHORT).show();
@@ -195,7 +197,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if(response.isSuccessful()){
                     List<ProductModel> products = response.body().getProduct();
-                    mAdapter = new ProductAdapter(products);
+                    mAdapter = new ProductAdapter(products,getActivity());
                     mRecyclerView.setAdapter(mAdapter);
                 }else{
                     Toast.makeText(getActivity(), "Error : "+response.message().toString(), Toast.LENGTH_SHORT).show();

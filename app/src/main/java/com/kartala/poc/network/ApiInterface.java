@@ -3,6 +3,8 @@ package com.kartala.poc.network;
 import com.kartala.poc.model.Login;
 import com.kartala.poc.model.Product;
 import com.kartala.poc.model.ProductModel;
+import com.kartala.poc.model.TransactionModel;
+import com.kartala.poc.model.Transaksi;
 
 import java.util.List;
 
@@ -29,9 +31,35 @@ public interface ApiInterface {
     Call<Product> gettableproduct(@Header("Authorization") String access_token);
     @GET("product/getchairproduct")
     Call<Product> getchairproduct(@Header("Authorization") String access_token);
-//    //Get Profile
-//    @POST("user/get_data_profile")
-//    @FormUrlEncoded
-//    Call<Profile> getProfile(@Header("id_user") String id_user2, @Header("access_token") String access_token, @Field("id_user") String id_user);
-
+    @POST("transaction/purchaseorder")
+    @FormUrlEncoded
+    Call<Transaksi> purchase(@Header("Authorization") String access_token,
+                             @Field("id_customer") String id_customer,
+                             @Field("id_driver") String id_driver,
+                             @Field("id_admin") String id_admin,
+                             @Field("id_product") String id_product,
+                             @Field("vendor") String vendor,
+                             @Field("name") String name,
+                             @Field("phone") String phone,
+                             @Field("created_at") String created_at,
+                             @Field("update_at") String update_at,
+                             @Field("status") String status,
+                             @Field("address") String address
+    );
+    @POST("transaction/listTransactionByCustomer")
+    @FormUrlEncoded
+    Call<TransactionModel> getcustomertransaction(@Header("Authorization") String access_token,
+                                                  @Field("id_customer") String id_customer
+    );
+    @GET("transaction/listTransactionAll")
+    Call<TransactionModel> getalltransaction(@Header("Authorization") String access_token
+    );
+    @POST("transaction/updateTransaction")
+    @FormUrlEncoded
+    Call<Transaksi> settransaction(@Header("Authorization") String access_token,
+                                   @Field("id_transaction") String id_transaction,
+                                   @Field("role") String role,
+                                   @Field("id_user") String id_user,
+                                   @Field("status") String status
+    );
 }

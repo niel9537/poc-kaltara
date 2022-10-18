@@ -24,15 +24,16 @@
 
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imgProduct"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="500dp"
                     android:src="@drawable/furniture"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <TextView
+                    android:id="@+id/txtBack"
                     android:textSize="20sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/txtName"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_width="match_parent"
@@ -62,6 +64,7 @@
                 android:textSize="30sp"
                 android:fontFamily="@font/archivo"/>
             <TextView
+                android:id="@+id/txtCategory"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_width="match_parent"
@@ -71,6 +74,7 @@
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-medium"/>
             <TextView
+                android:id="@+id/txtDescription"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_width="match_parent"
@@ -83,6 +87,7 @@
 
         </LinearLayout>
         <Button
+            android:id="@+id/btnOrder"
             android:layout_marginTop="100dp"
             android:text="ORDER"
             android:textStyle="bold"

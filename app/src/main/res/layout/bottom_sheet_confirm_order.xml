@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+       <TextView
+           android:fontFamily="@font/archivo"
+           android:id="@+id/txtName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp"
+           android:text="Merk Perabot"
+           android:textColor="@color/purple_500"
+           android:textStyle="bold"
+           android:textSize="20sp"
+           android:layout_marginTop="10dp"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp"
+           android:text="Apa anda yakin ingin memesan produk ini ?"
+           android:textColor="@color/purple_500"
+           android:textStyle="bold"
+           android:textSize="12sp"
+           android:layout_marginTop="10dp"/>
+       <com.google.android.material.textfield.TextInputLayout
+           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+           android:layout_marginTop="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp">
+           <com.google.android.material.textfield.TextInputEditText
+               android:id="@+id/edtPhone"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="top"
+               android:inputType="number"
+               android:hint="Nomor HP"/>
+       </com.google.android.material.textfield.TextInputLayout>
+       <com.google.android.material.textfield.TextInputLayout
+           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+           android:layout_marginTop="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp">
+           <com.google.android.material.textfield.TextInputEditText
+
+               android:id="@+id/edtAddress"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:lines="8"
+               android:gravity="top"
+               android:maxLines="10"
+               android:minLines="5"
+               android:inputType="textMultiLine"
+               android:hint="Alamat"/>
+       </com.google.android.material.textfield.TextInputLayout>
+       <Button
+           android:id="@+id/btnPurchase"
+           android:layout_margin="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Purchase"/>
+   </LinearLayout>
+</LinearLayout>

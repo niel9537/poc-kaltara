@@ -11,8 +11,8 @@ public class SharedPref {
     public static final String KEY_TOKEN = "token";
     public static final String KEY_ID = "id";
     public static final String KEY_ROLE = "role";
-
-
+    public static final String KEY_NAME = "name";
+    public static final String KEY_PHONE = "phone";
     private SharedPref()
     {
 

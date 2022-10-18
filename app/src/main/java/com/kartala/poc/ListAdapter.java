@@ -2,8 +2,6 @@ package com.kartala.poc;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,29 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.kartala.poc.model.Product;
 import com.kartala.poc.model.ProductModel;
 
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
     List<ProductModel> productList;
     Context context;
 //    public ProductAdapter(List<ProductModel> products) {
 //        productList = products;
 //    }
 
-    public ProductAdapter(List<ProductModel> productList, Context context) {
+    public ListAdapter(List<ProductModel> productList, Context context) {
         this.productList = productList;
         this.context = context;
     }
