@@ -75,6 +75,7 @@
                    android:textStyle="bold"
                    android:textSize="12sp"/>
                <TextView
+                   android:gravity="center"
                    android:id="@+id/txtVendorName"
                    android:layout_marginHorizontal="10dp"
                    android:layout_weight="1"
@@ -95,7 +96,6 @@
                    android:layout_height="wrap_content"
                    android:text="Penerima : Niel"
                    android:textColor="@color/black"
-                   android:textStyle="bold"
                    android:textSize="12sp"/>
            </LinearLayout>
 

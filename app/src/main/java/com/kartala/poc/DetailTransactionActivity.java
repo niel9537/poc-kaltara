@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class DetailTransactionActivity extends AppCompatActivity {
     String id_transaction,status,created_at,product_name,product_image,customer_name,driver_name,customer_address;
-    TextView txtStatus, txtCreateAt, txtIdTransaction,txtProductName,txtCustomerName,txtAddress,txtDriverName,txtBack,txtBarcode;
+    TextView txtStatus, txtCreateAt, txtIdTransaction,txtProductName,txtCustomerName,txtAddress,txtDriverName,txtBack,txtBarcode, txtDetail;
     ImageView imgProduct;
     Config config;
     Button btnScan;
@@ -46,7 +46,14 @@ public class DetailTransactionActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
+        txtDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailTransactionActivity.this,StatusTransactionActivity.class);
+                intent.putExtra("status",status);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init(){
@@ -67,6 +74,7 @@ public class DetailTransactionActivity extends AppCompatActivity {
         txtIdTransaction = findViewById(R.id.txtIdTransaction);
         txtProductName = findViewById(R.id.txtProductName);
         txtBarcode =findViewById(R.id.txtBarcode);
+        txtDetail =findViewById(R.id.txtDetail);
         txtCustomerName = findViewById(R.id.txtCustomerName);
         txtAddress = findViewById(R.id.txtAddress);
         txtDriverName = findViewById(R.id.txtDriverName);
@@ -99,6 +107,24 @@ public class DetailTransactionActivity extends AppCompatActivity {
                 scan(id_transaction,"0");
             }
 
+        }
+        if(role.equals("2")){
+            if(status.equals("6")){
+                btnScan.setVisibility(View.VISIBLE);
+                scan(id_transaction,"5");
+            }
+        }
+        if(role.equals("1")){
+            if(status.equals("4")) {
+                btnScan.setVisibility(View.VISIBLE);
+                scan(id_transaction, "3");
+            }
+        }
+        if(role.equals("4")){
+            if(status.equals("2")) {
+                btnScan.setVisibility(View.VISIBLE);
+                scan(id_transaction, "1");
+            }
         }
         txtBarcode.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,9 +13,8 @@
         android:layout_weight="1"
         android:id="@+id/fragment"/>
     <androidx.cardview.widget.CardView
-        android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="25dp"
-        app:cardElevation="30dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="-5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <com.google.android.material.bottomnavigation.BottomNavigationView

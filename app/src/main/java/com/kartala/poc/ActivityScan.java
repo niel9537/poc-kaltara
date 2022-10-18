@@ -49,7 +49,12 @@ public class ActivityScan extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setTransactionStatus(TRANSACTION_ID,ROLE,ID,STATUS);
+                        if(result.getText().equals(TRANSACTION_ID)){
+                            setTransactionStatus(TRANSACTION_ID,ROLE,ID,STATUS);
+                        }else{
+                            onBackPressed();
+                        }
+
 
 //                        intent.putExtra("TRXID",result.getText().toString());
 //                        intent.putExtra("STATUS", Config.SCAN);

@@ -45,5 +45,6 @@ dependencies {
     implementation "androidx.camera:camera-camera2:1.2.0-alpha04"
     implementation "androidx.camera:camera-lifecycle:1.2.0-alpha04"
     implementation "androidx.camera:camera-view:1.2.0-alpha04"
+    implementation 'com.github.baoyachi:StepView:1.9'
 
 }
