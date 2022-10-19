@@ -2,7 +2,7 @@ package com.kartala.poc;
 
 public class Config {
 
-    public static final String BASE_URL = "http://192.168.1.9:8080/po_api/api/";
+    public static final String BASE_URL = "http://192.168.223.147:8080/po_api/api/";
     public static final int SCAN = 111;
     public static final int PERMISSION_REQUEST_CODE = 200;
     public static final int CAMERA_REQUEST = 1888;

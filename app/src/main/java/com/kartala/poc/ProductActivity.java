@@ -1,8 +1,13 @@
 package com.kartala.poc;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.kartala.poc.model.Login;
 import com.kartala.poc.model.Transaksi;
@@ -24,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,10 +91,39 @@ public class ProductActivity extends AppCompatActivity {
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_confirm_order);
         EditText edtPhone = bottomSheetDialog.findViewById(R.id.edtPhone);
         TextView txtName = bottomSheetDialog.findViewById(R.id.txtName);
+        //AutoCompleteTextView autoCompleteTextView = bottomSheetDialog.findViewById(R.id.autocomplete);
         Button btnPurchase = bottomSheetDialog.findViewById(R.id.btnPurchase);
         EditText edtAddress = bottomSheetDialog.findViewById(R.id.edtAddress);
         txtName.setText(name);
         edtPhone.setText(SharedPref.getString(SharedPref.KEY_PHONE,null));
+//        autoCompleteTextView.setAdapter(new PlaceAutoSuggestAdapter(ProductActivity.this,android.R.layout.simple_list_item_1));
+//
+//        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Log.d("Address : ",autoCompleteTextView.getText().toString());
+//                LatLng latLng=getLatLngFromAddress(autoCompleteTextView.getText().toString());
+//                if(latLng!=null) {
+//                    Log.d("Lat Lng : ", " " + latLng.latitude + " " + latLng.longitude);
+//                    Address address=getAddressFromLatLng(latLng);
+//                    if(address!=null) {
+//                        Log.d("Address : ", "" + address.toString());
+//                        Log.d("Address Line : ",""+address.getAddressLine(0));
+//                        Log.d("Phone : ",""+address.getPhone());
+//                        Log.d("Pin Code : ",""+address.getPostalCode());
+//                        Log.d("Feature : ",""+address.getFeatureName());
+//                        Log.d("More : ",""+address.getLocality());
+//                    }
+//                    else {
+//                        Log.d("Adddress","Address Not Found");
+//                    }
+//                }
+//                else {
+//                    Log.d("Lat Lng","Lat Lng Not Found");
+//                }
+//
+//            }
+//        });
         bottomSheetDialog.show();
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,8 +151,10 @@ public class ProductActivity extends AppCompatActivity {
                 fDate,
                 "",
                 "8",
-                address
+                address,
+                SharedPref.getString(SharedPref.KEY_NOTIF_TOKEN,null)
         );
+        Log.d("Firebase Token : ",SharedPref.getString(SharedPref.KEY_NOTIF_TOKEN,null));
         purchaseCall.enqueue(new Callback<Transaksi>() {
             @Override
             public void onResponse(Call<Transaksi> call, Response<Transaksi> response) {
@@ -132,6 +170,49 @@ public class ProductActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Error : "+t.getMessage().toString(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private LatLng getLatLngFromAddress(String address){
+
+        Geocoder geocoder=new Geocoder(ProductActivity.this);
+        List<Address> addressList;
+
+        try {
+            addressList = geocoder.getFromLocationName(address, 1);
+            if(addressList!=null){
+                Address singleaddress=addressList.get(0);
+                LatLng latLng=new LatLng(singleaddress.getLatitude(),singleaddress.getLongitude());
+                return latLng;
+            }
+            else{
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    private Address getAddressFromLatLng(LatLng latLng){
+        Geocoder geocoder=new Geocoder(ProductActivity.this);
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 5);
+            if(addresses!=null){
+                Address address=addresses.get(0);
+                return address;
+            }
+            else{
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 

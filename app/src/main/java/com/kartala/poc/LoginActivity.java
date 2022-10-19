@@ -1,6 +1,7 @@
 package com.kartala.poc;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,16 +9,21 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kartala.poc.model.Login;
 import com.kartala.poc.network.ApiHelper;
 import com.kartala.poc.network.ApiInterface;
@@ -68,6 +74,25 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TOKEN FIREBASE", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        SharedPref.putString(SharedPref.KEY_NOTIF_TOKEN,token);
+                       // edtUsername.setText(token);
+                        // Log and toast
+                    //    @SuppressLint({"StringFormatInvalid", "LocalSuppress"}) String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d("TOKEN FIREBASE", token);
+                    }
+                });
     }
 
     private void login(){
@@ -83,6 +108,8 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPref.putString(SharedPref.KEY_NAME,response.body().getUser().getName().toString());
                     SharedPref.putString(SharedPref.KEY_PHONE,response.body().getUser().getPhone().toString());
                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+
                 }else{
                     Toast.makeText(getApplicationContext(),"Error : "+response.message().toString(),Toast.LENGTH_SHORT).show();
                 }

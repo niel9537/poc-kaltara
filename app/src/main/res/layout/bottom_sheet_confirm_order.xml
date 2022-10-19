@@ -10,6 +10,11 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical">
+<!--       <AutoCompleteTextView-->
+<!--           android:hint="Search Location"-->
+<!--           android:layout_width="match_parent"-->
+<!--           android:layout_height="wrap_content"-->
+<!--           android:id="@+id/autocomplete" />-->
        <TextView
            android:fontFamily="sans-serif-medium"
            android:id="@+id/txtName"

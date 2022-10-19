@@ -132,8 +132,10 @@ public class StatusTransactionActivity extends AppCompatActivity {
             st = 7;
         }else if(Integer.valueOf(STATUS) == 1){
             st = 8;
+        }else if(Integer.valueOf(STATUS) == 0){
+            st = 9;
         }else{
-            st = 0;
+
         }
         step_view.setStepsViewIndicatorComplectingPosition(st);
     }

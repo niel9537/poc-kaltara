@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "244768539422",
+    "project_id": "poc-kartala",
+    "storage_bucket": "poc-kartala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244768539422:android:681d953e838ae1bc2ebf0f",
+        "android_client_info": {
+          "package_name": "com.kartala.poc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244768539422-qv5j0pahtbu5oc7qnfo21ju78nia2nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyb80e9wzFCbSCgVWxqNYxSBtKy7ho4nA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244768539422-qv5j0pahtbu5oc7qnfo21ju78nia2nrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -124,7 +124,7 @@
                         android:layout_marginHorizontal="30dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:text="2022-12-11"
+                        android:text=""
                         android:textColor="@color/brown"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -202,7 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:layout_weight="1"
-                            android:text="Meja gaming tanpa lecet"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -213,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:layout_weight="1"
-                            android:text="Penerima : Niel"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
@@ -289,7 +289,7 @@
                             android:layout_marginHorizontal="30dp"
                             android:layout_weight="1"
                             android:gravity="left"
-                            android:text="David"
+                            android:text=""
                             android:textColor="@color/brown"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -346,7 +346,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:lineSpacingExtra="3dp"
-                            android:text="Otniel \nSleman, Daerah Istimewa Yogyakarta"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 

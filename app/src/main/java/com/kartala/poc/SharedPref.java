@@ -13,6 +13,7 @@ public class SharedPref {
     public static final String KEY_ROLE = "role";
     public static final String KEY_NAME = "name";
     public static final String KEY_PHONE = "phone";
+    public static final String KEY_NOTIF_TOKEN = "notif";
     private SharedPref()
     {
 

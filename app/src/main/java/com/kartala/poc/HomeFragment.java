@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,10 +26,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.kartala.poc.model.Notif;
+import com.kartala.poc.model.NotifRes;
+import com.kartala.poc.model.Notification;
 import com.kartala.poc.model.Product;
 import com.kartala.poc.model.ProductModel;
+import com.kartala.poc.model.Transaksi;
+import com.kartala.poc.model.TransaksiNotif;
 import com.kartala.poc.network.ApiHelper;
 import com.kartala.poc.network.ApiInterface;
+import com.kartala.poc.network.FirebaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +43,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -101,33 +109,79 @@ public class HomeFragment extends Fragment {
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#64a4d4\">" + getString(R.string.app_name) + "</font>")));
         init(view);
+
         getProducts();
         List<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel("https://expatliving.sg/wp-content/uploads/2019/01/Originals-sofa-4-rs.jpg", ScaleTypes.CENTER_INSIDE));
         slideModels.add(new SlideModel("https://d3p0bla3numw14.cloudfront.net/news-content/img/2021/10/27211303/Furniture-Unik-untuk-Rumah-Kecil.jpg",ScaleTypes.CENTER_INSIDE));
         slideModels.add(new SlideModel("https://i.ibb.co/C9qgLtV/upload1.jpg",ScaleTypes.CENTER_INSIDE));
         imageSlider.setImageList(slideModels);
+        txtAll.setTextColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+        txtAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
         txtAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txtAll.setTextColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtChair.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtChair.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtTable.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtTable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
                 getProducts();
             }
         });
         txtChair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txtChair.setTextColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtChair.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtAll.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtTable.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtTable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
                 getChair();
             }
         });
         txtTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txtTable.setTextColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtTable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtAll.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
+                txtChair.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtChair.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.purple_500));
                 getTable();
             }
         });
+
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
+    private void sendNotif() {
+        ApiInterface apiInterface = FirebaseHelper.getClient().create(ApiInterface.class);
+        Call<TransaksiNotif> notifResCall = apiInterface.sendNotif(
+                SharedPref.getString(SharedPref.KEY_TOKEN,null),
+                SharedPref.getString(SharedPref.KEY_NOTIF_TOKEN,null),
+                "Sukses Kirim");
+        notifResCall.enqueue(new Callback<TransaksiNotif>() {
+            @Override
+            public void onResponse(Call<TransaksiNotif> call, Response<TransaksiNotif> response) {
+                if(response.isSuccessful()){
+
+                }else{
+                    Toast.makeText(getActivity(), "Error : "+response.message().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransaksiNotif> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error Failure : "+t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void init(View view){
         imageSlider = view.findViewById(R.id.slider);
         txtWelcome = view.findViewById(R.id.txtWelcome);

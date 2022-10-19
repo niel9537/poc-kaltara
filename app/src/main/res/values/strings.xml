@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">poc</string>
+    <string name="msg_token_fmt">Token : </string>
+
 </resources>
