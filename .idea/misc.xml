@@ -9,6 +9,7 @@
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable-v24/ic_orders_icon2.xml" value="0.2075" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable-v24/ic_surprise_icon2.xml" value="0.2075" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable-v24/ic_warehouse_icon1.xml" value="0.2075" />
+        <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable/back_back.xml" value="0.131" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1985" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable/ic_bag.xml" value="0.2075" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/drawable/ic_circle.xml" value="0.2075" />
@@ -27,11 +28,14 @@
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_product.xml" value="0.22" />
+        <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_profil.xml" value="0.209375" />
+        <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_profile.xml" value="0.1718683197947841" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/activity_scan_qr_activity.xml" value="0.371875" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/barcode_layout.xml" value="0.371875" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/bottom_sheet_confirm_order.xml" value="0.33" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/fragment_list.xml" value="0.371875" />
+        <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/item_product.xml" value="0.22" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/item_transaksi.xml" value="0.371875" />
         <entry key="..\:/Project/POC Kaltara/app/src/main/res/layout/notification.xml" value="0.25" />

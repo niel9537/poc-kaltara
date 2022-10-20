@@ -107,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPref.putString(SharedPref.KEY_ROLE,response.body().getUser().getRole().toString());
                     SharedPref.putString(SharedPref.KEY_NAME,response.body().getUser().getName().toString());
                     SharedPref.putString(SharedPref.KEY_PHONE,response.body().getUser().getPhone().toString());
+                    SharedPref.putString(SharedPref.KEY_EMAIL,response.body().getUser().getEmail().toString());
                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
 

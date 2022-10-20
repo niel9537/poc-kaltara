@@ -44,7 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         public ImageView imgProduct;
         public MyViewHolder(View itemView) {
             super(itemView);
-            txtName = (TextView) itemView.findViewById(R.id.txtName);
+          //  txtName = (TextView) itemView.findViewById(R.id.txtName);
             //txtPrice = (TextView) itemView.findViewById(R.id.txtPrice);
             imgProduct = (ImageView) itemView.findViewById(R.id.imgProduct);
         }
@@ -59,7 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.txtName.setText(productList.get(position).getName());
+       // holder.txtName.setText(productList.get(position).getName());
 //        DecimalFormat decim = new DecimalFormat("#,###.##");
 //        holder.txtPrice.setText("Rp " +decim.format(Integer.valueOf(productList.get(position).getPrice())));
         Glide.with(holder.itemView.getContext())
