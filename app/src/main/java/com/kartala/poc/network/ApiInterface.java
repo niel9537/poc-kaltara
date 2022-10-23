@@ -48,6 +48,8 @@ public interface ApiInterface {
                              @Field("phone") String phone,
                              @Field("created_at") String created_at,
                              @Field("update_at") String update_at,
+                             @Field("customer_lat") String customer_lat,
+                             @Field("customer_lon") String customer_lon,
                              @Field("status") String status,
                              @Field("address") String address,
                              @Field("token") String token
@@ -60,13 +62,16 @@ public interface ApiInterface {
     @GET("transaction/listTransactionAll")
     Call<TransactionModel> getalltransaction(@Header("Authorization") String access_token
     );
+
     @POST("transaction/updateTransaction")
     @FormUrlEncoded
     Call<Transaksi> settransaction(@Header("Authorization") String access_token,
                                    @Field("id_transaction") String id_transaction,
                                    @Field("role") String role,
                                    @Field("id_user") String id_user,
-                                   @Field("status") String status
+                                   @Field("status") String status,
+                                   @Field("status_lat") String status_lat,
+                                   @Field("status_long") String status_long
     );
 
     @POST("transaction/sendNotif")

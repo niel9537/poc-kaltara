@@ -42,8 +42,11 @@ public class ProductActivity extends AppCompatActivity {
     Button btnOrder;
     EditText edtAddress,edtPhone;
     String phone;
+    String lat;
+    String lon;
     String name;
     String id, vendor;
+    LoadingDialogBar loadingDialogBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +81,8 @@ public class ProductActivity extends AppCompatActivity {
 
     private void init(){
         SharedPref.init(getApplicationContext());
+        loadingDialogBar = new LoadingDialogBar(ProductActivity.this);
+
         txtBack = findViewById(R.id.txtBack);
         txtName = findViewById(R.id.txtName);
         txtDescription = findViewById(R.id.txtDescription);
@@ -93,42 +98,42 @@ public class ProductActivity extends AppCompatActivity {
         TextView txtName = bottomSheetDialog.findViewById(R.id.txtName);
         //AutoCompleteTextView autoCompleteTextView = bottomSheetDialog.findViewById(R.id.autocomplete);
         Button btnPurchase = bottomSheetDialog.findViewById(R.id.btnPurchase);
-        EditText edtAddress = bottomSheetDialog.findViewById(R.id.edtAddress);
+       // EditText edtAddress = bottomSheetDialog.findViewById(R.id.edtAddress);
         txtName.setText(name);
         edtPhone.setText(SharedPref.getString(SharedPref.KEY_PHONE,null));
-//        autoCompleteTextView.setAdapter(new PlaceAutoSuggestAdapter(ProductActivity.this,android.R.layout.simple_list_item_1));
-//
-//        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Log.d("Address : ",autoCompleteTextView.getText().toString());
-//                LatLng latLng=getLatLngFromAddress(autoCompleteTextView.getText().toString());
-//                if(latLng!=null) {
-//                    Log.d("Lat Lng : ", " " + latLng.latitude + " " + latLng.longitude);
-//                    Address address=getAddressFromLatLng(latLng);
-//                    if(address!=null) {
-//                        Log.d("Address : ", "" + address.toString());
-//                        Log.d("Address Line : ",""+address.getAddressLine(0));
-//                        Log.d("Phone : ",""+address.getPhone());
-//                        Log.d("Pin Code : ",""+address.getPostalCode());
-//                        Log.d("Feature : ",""+address.getFeatureName());
-//                        Log.d("More : ",""+address.getLocality());
-//                    }
-//                    else {
-//                        Log.d("Adddress","Address Not Found");
-//                    }
-//                }
-//                else {
-//                    Log.d("Lat Lng","Lat Lng Not Found");
-//                }
-//
-//            }
-//        });
+        AutoCompleteTextView autoCompleteTextView=bottomSheetDialog.findViewById(R.id.autocomplete);
+        autoCompleteTextView.setAdapter(new PlaceAutoSuggestAdapter(ProductActivity.this,android.R.layout.simple_list_item_1));
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Address : ",autoCompleteTextView.getText().toString());
+                LatLng latLng=getLatLngFromAddress(autoCompleteTextView.getText().toString());
+                if(latLng!=null) {
+                    Log.d("Lat Lng : ", " " + latLng.latitude + " " + latLng.longitude);
+                    Address address=getAddressFromLatLng(latLng);
+                    if(address!=null) {
+                        Log.d("Address : ", "" + address.toString());
+                        Log.d("Address Line : ",""+address.getAddressLine(0));
+                        lat = String.valueOf(address.getLatitude());
+                        lon = String.valueOf(address.getLongitude());
+                    }
+                    else {
+                        Log.d("Adddress","Address Not Found");
+                    }
+                }
+                else {
+                    Log.d("Lat Lng","Lat Lng Not Found");
+                }
+
+            }
+        });
         bottomSheetDialog.show();
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchase(edtPhone.getText().toString(),edtAddress.getText().toString());
+                bottomSheetDialog.dismiss();
+                purchase(edtPhone.getText().toString(),autoCompleteTextView.getText().toString());
             }
         });
 
@@ -150,6 +155,8 @@ public class ProductActivity extends AppCompatActivity {
                 phone,
                 fDate,
                 "",
+                lat,
+                lon,
                 "8",
                 address,
                 SharedPref.getString(SharedPref.KEY_NOTIF_TOKEN,null)
@@ -159,6 +166,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Transaksi> call, Response<Transaksi> response) {
                 if(response.isSuccessful()){
+                    loadingDialogBar.success();
                     startActivity(new Intent(ProductActivity.this,MainActivity.class));
                 }else{
                     Toast.makeText(getApplicationContext(),"Error : "+response.message().toString(),Toast.LENGTH_SHORT).show();

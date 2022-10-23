@@ -3,6 +3,7 @@ package com.kartala.poc;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.VIBRATE,
             Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+
     };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +57,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         init();
         checkPermissions();
+        int j = SharedPref.getInteger(SharedPref.KEY_LOGIN, Config.KEEP_LOGIN);
+        if(j > 0){
+            Intent activity = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(activity);
+        }
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPref.putString(SharedPref.KEY_NAME,response.body().getUser().getName().toString());
                     SharedPref.putString(SharedPref.KEY_PHONE,response.body().getUser().getPhone().toString());
                     SharedPref.putString(SharedPref.KEY_EMAIL,response.body().getUser().getEmail().toString());
+                    SharedPref.putInteger(SharedPref.KEY_LOGIN,1);
                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
 

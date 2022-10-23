@@ -55,7 +55,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.txtCreateAt.setText(transactionList.get(position).getCreatedAt());
-        holder.txtStatus.setText(transactionList.get(position).getStatus());
+        holder.txtStatus.setText(Config.setStatusItem(transactionList.get(position).getStatus()));
         holder.txtProductName.setText(transactionList.get(position).getProductName());
         holder.txtVendorName.setText(transactionList.get(position).getVendorName());
         holder.txtCustomerName.setText("Penerima : "+transactionList.get(position).getCustomerName());
@@ -77,6 +77,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
                 intent.putExtra("customer_name",transactionList.get(position).getCustomerName());
                 intent.putExtra("driver_name",transactionList.get(position).getDriverName());
                 intent.putExtra("customer_address",transactionList.get(position).getAddress());
+                intent.putExtra("customer_lat",transactionList.get(position).getCustomerLat());
+                intent.putExtra("customer_lon",transactionList.get(position).getCustomerLon());
+                intent.putExtra("status_lat",transactionList.get(position).getStatusLat());
+                intent.putExtra("status_lon",transactionList.get(position).getStatusLon());
                 view.getContext().startActivity(intent);
             }
         });

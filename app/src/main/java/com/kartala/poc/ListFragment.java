@@ -1,6 +1,7 @@
 package com.kartala.poc;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -47,6 +49,8 @@ public class ListFragment extends Fragment {
     String TOKEN = "";
     TextView txtWelcome, txtAll, txtChair, txtTable;
     String tes = "";
+    String role;
+    SwipeRefreshLayout swipeRefreshLayout;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -93,7 +97,7 @@ public class ListFragment extends Fragment {
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#64a4d4\">" + getString(R.string.app_name) + "</font>")));
         init(view);
-        String role = SharedPref.getString(SharedPref.KEY_ROLE,null);
+
         if(role.equals("4")){
             getTransaction();
         }else{
@@ -106,12 +110,31 @@ public class ListFragment extends Fragment {
     }
     private void init(View view){
         SharedPref.init(getActivity());
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+        role = SharedPref.getString(SharedPref.KEY_ROLE,null);
         ID = SharedPref.getString(SharedPref.KEY_ID,null);
         String nama = SharedPref.getString(SharedPref.KEY_NAME,null);
+        txtWelcome = view.findViewById(R.id.txtWelcome);
         TOKEN = SharedPref.getString(SharedPref.KEY_TOKEN,null);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rvTransaksi);
         mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
+//        txtWelcome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(),ActivityMap.class));
+//            }
+//        });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(role.equals("4")){
+                    getTransaction();
+                }else{
+                    getTransactionAll();
+                }
+            }
+        });
 
     }
     public void getTransaction() {

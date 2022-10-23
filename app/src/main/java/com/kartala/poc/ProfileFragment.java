@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
         }
 
         Glide.with(getActivity())
-                .load("https://i.pinimg.com/originals/99/c2/c6/99c2c68a41fb5df062a8cbac15dc2ddc.png")
+                .load("https://picsum.photos/200/300")
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgView2);
 //

@@ -24,7 +24,7 @@
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/archivo"
-                android:text="POC - LOGIN"
+                android:text="DEMO OLR"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="25sp"

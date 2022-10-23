@@ -9,6 +9,7 @@ public class SharedPref {
     private static SharedPreferences mSharedPref;
     public static final String PREF_NAME = "mypref";
     public static final String KEY_TOKEN = "token";
+    public static final String KEY_LOGIN = "login";
     public static final String KEY_ID = "id";
     public static final String KEY_ROLE = "role";
     public static final String KEY_NAME = "name";

@@ -17,9 +17,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
+                    android:layout_weight="1"
                     android:id="@+id/txtBack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -29,6 +30,20 @@
                     android:drawableTint="@color/purple_500"
                     android:text="      Detail Pesanan"
                     android:gravity="center|left"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_500" />
+                <TextView
+                    android:layout_weight="3"
+                    android:id="@+id/txtLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginVertical="20dp"
+                    android:drawableRight="@drawable/ic_loc"
+                    android:drawableTint="@color/purple_500"
+                    android:text=""
+                    android:gravity="right"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@color/purple_500" />

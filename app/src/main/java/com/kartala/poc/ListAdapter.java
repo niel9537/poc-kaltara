@@ -67,6 +67,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 intent.putExtra("price",productList.get(position).getPrice());
                 intent.putExtra("vendor",productList.get(position).getVendor());
                 intent.putExtra("image",productList.get(position).getImage());
+
+
                 view.getContext().startActivity(intent);
             }
         });

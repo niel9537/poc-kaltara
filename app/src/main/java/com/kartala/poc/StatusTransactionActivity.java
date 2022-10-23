@@ -116,39 +116,30 @@ public class StatusTransactionActivity extends AppCompatActivity {
                 .setStepsViewIndicatorAttentionIcon(getDrawable(R.drawable.ic_circle))
                 .setStepsViewIndicatorDefaultIcon(getDrawable(R.drawable.ic_circle));
         int st = 0;
-        if(Integer.valueOf(STATUS) == 8){
+        if(Integer.valueOf(STATUS) == 5){
             st = 1;
-        }else if(Integer.valueOf(STATUS) == 7){
-            st = 2;
-        }else if(Integer.valueOf(STATUS) == 6){
-            st = 3;
-        }else if(Integer.valueOf(STATUS) == 5){
-            st = 4;
         }else if(Integer.valueOf(STATUS) == 4){
-            st = 5;
+            st = 2;
         }else if(Integer.valueOf(STATUS) == 3){
-            st = 6;
+            st = 3;
         }else if(Integer.valueOf(STATUS) == 2){
-            st = 7;
+            st = 4;
         }else if(Integer.valueOf(STATUS) == 1){
-            st = 8;
+            st = 5;
         }else if(Integer.valueOf(STATUS) == 0){
-            st = 9;
-        }else{
-
+            st = 6;
+        }else {
         }
         step_view.setStepsViewIndicatorComplectingPosition(st);
     }
     private List<String> getList(){
         List<String> list = new ArrayList<>();
-        list.add("Pesanan menunggu di proses");
-        list.add("Pesanan sedang di proses oleh driver ke alamat vendor");
-        list.add("Pesanan sedang di proses oleh vendor");
-        list.add("Pesanan sedang di antar oleh driver ke gudang terdekat");
-        list.add("Pesanan telah sampai di gudang terdekat");
-        list.add("Pesanan sedang di antar oleh driver ke alamat customer");
-        list.add("Pesanan berhasil di terima oleh customer");
-        list.add("Pesanan telah terkirim");
+        list.add("Pesanan sedang di proses");
+        list.add("Menunggu driver pick up pesanan");
+        list.add("Pesanan dalam perjalanan ke gudang transit");
+        list.add("Pesanan di gudang transit");
+        list.add("Pesanan sedang di antar ke alamat pelanggan");
+        list.add("Barang selesai diantar");
         return list;
     }
 }

@@ -58,11 +58,23 @@ public class ListTransaction {
     @SerializedName("update_at")
     @Expose
     private String updateAt;
+    @SerializedName("customer_lat")
+    @Expose
+    private String customerLat;
+    @SerializedName("customer_lon")
+    @Expose
+    private String customerLon;
+    @SerializedName("status_lat")
+    @Expose
+    private String statusLat;
+    @SerializedName("status_lon")
+    @Expose
+    private String statusLon;
     @SerializedName("status")
     @Expose
     private String status;
 
-    public ListTransaction(String idTransaction, String idCustomer, String customerName, String idDriver, String driverName, String idAdmin, Object adminName, String idProduct, String productName, String productPrice, String productImage, String vendor, String vendorName, String address, String vendorPhone, String phone, String createdAt, String updateAt, String status) {
+    public ListTransaction(String idTransaction, String idCustomer, String customerName, String idDriver, String driverName, String idAdmin, Object adminName, String idProduct, String productName, String productPrice, String productImage, String vendor, String vendorName, String address, String vendorPhone, String phone, String createdAt, String updateAt, String customerLat, String customerLon, String statusLat, String statusLon, String status) {
         this.idTransaction = idTransaction;
         this.idCustomer = idCustomer;
         this.customerName = customerName;
@@ -81,6 +93,10 @@ public class ListTransaction {
         this.phone = phone;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
+        this.customerLat = customerLat;
+        this.customerLon = customerLon;
+        this.statusLat = statusLat;
+        this.statusLon = statusLon;
         this.status = status;
     }
 
@@ -226,6 +242,38 @@ public class ListTransaction {
 
     public void setUpdateAt(String updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public String getCustomerLat() {
+        return customerLat;
+    }
+
+    public void setCustomerLat(String customerLat) {
+        this.customerLat = customerLat;
+    }
+
+    public String getCustomerLon() {
+        return customerLon;
+    }
+
+    public void setCustomerLon(String customerLon) {
+        this.customerLon = customerLon;
+    }
+
+    public String getStatusLat() {
+        return statusLat;
+    }
+
+    public void setStatusLat(String statusLat) {
+        this.statusLat = statusLat;
+    }
+
+    public String getStatusLon() {
+        return statusLon;
+    }
+
+    public void setStatusLon(String statusLon) {
+        this.statusLon = statusLon;
     }
 
     public String getStatus() {

@@ -10,11 +10,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical">
-<!--       <AutoCompleteTextView-->
-<!--           android:hint="Search Location"-->
-<!--           android:layout_width="match_parent"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:id="@+id/autocomplete" />-->
+
        <TextView
            android:fontFamily="sans-serif-medium"
            android:id="@+id/txtName"
@@ -55,17 +51,29 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_marginHorizontal="20dp">
-           <com.google.android.material.textfield.TextInputEditText
-
-               android:id="@+id/edtAddress"
+           <com.google.android.material.textfield.MaterialAutoCompleteTextView
+               android:hint="Cari Alamat"
+               android:paddingHorizontal="15dp"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:lines="8"
-               android:gravity="top"
                android:maxLines="10"
+               android:lines="8"
                android:minLines="5"
+               android:gravity="top"
+               android:paddingTop="10dp"
                android:inputType="textMultiLine"
-               android:hint="Alamat"/>
+               android:id="@+id/autocomplete" />
+<!--           <com.google.android.material.textfield.TextInputEditText-->
+
+<!--               android:id="@+id/edtAddress"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:lines="8"-->
+<!--               android:gravity="top"-->
+<!--               android:maxLines="10"-->
+<!--               android:minLines="5"-->
+<!--               android:inputType="textMultiLine"-->
+<!--               android:hint="Alamat"/>-->
        </com.google.android.material.textfield.TextInputLayout>
        <Button
            android:id="@+id/btnPurchase"
