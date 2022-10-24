@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">OLR</string>
     <string name="msg_token_fmt">Token : </string>
-    <string name="map_key" translatable="false">AIzaSyD9TO7xbhHlJ4_mlcmcvxfcLnk2y21QPfE</string>
+    <string name="map_key" translatable="false">Map Api</string>
 
 
 </resources>
